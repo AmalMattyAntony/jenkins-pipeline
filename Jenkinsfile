@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage(&apos;Build&apos;) {
+        stage('Build') {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main' ,url: 'https://github.com/spring-projects/spring-petclinic.git'
