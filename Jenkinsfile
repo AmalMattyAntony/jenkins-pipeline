@@ -18,13 +18,17 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
-                node {
-                    ansiblePlaybook( 
-                        playbook: '/home/vagrant/ansible-jar-playbook.yml',
-                        inventory: '/home/vagrant/hosts', 
-                        credentialsId: '/var/lib/jenkins/.ssh/id_rsa', 
-                }
+            }
+        }
+        stage('Deploy'){         
+            steps{
+                ansiblePlaybook( 
+                    playbook: '/home/vagrant/ansible-jar-playbook.yml',
+                    inventory: '/home/vagrant/hosts', 
+                    credentialsId: '/var/lib/jenkins/.ssh/id_rsa'
+                    )
             }
         }
     }
 }
+                        
